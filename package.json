@@ -1,13 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "prepublish": "pnpm build --filter=next-themes",
+    "prepublish": "pnpm build --filter=react-dynamic-fonts",
     "build": "turbo build",
     "start": "turbo start",
     "dev": "turbo dev",
     "test": "turbo test",
     "test:e2e": "pnpm playwright test",
-    "format": "prettier --write ."
+    "lint": "prettier --write ."
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
