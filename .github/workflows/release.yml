@@ -24,12 +24,18 @@ jobs:
         with:
           node-version: 18.x
           cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - run: pnpm install --frozen-lockfile
+      - name: Run tests
+        run: pnpm test
+
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
+          files: |
+            react-dynamic-fonts/dist/** 
           publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

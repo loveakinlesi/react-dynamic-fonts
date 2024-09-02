@@ -1,5 +1,4 @@
 packages:
-  - 'apps/*'
-  - 'packages/*'
   - 'react-dynamic-fonts'
-  - 'examples/*'
+  - 'examples/example'
+  - 'examples/tailwind'
