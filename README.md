@@ -1,1 +1,1 @@
-/react-dynamic-fonts/README.md
+react-dynamic-fonts/README.md
