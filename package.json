@@ -8,7 +8,8 @@
     "dev": "turbo dev",
     "test": "turbo test",
     "test:e2e": "pnpm playwright test",
-    "lint": "prettier --write ."
+    "lint": "prettier --write .",
+    "publish-packages": "turbo run build lint test && changeset version && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.7",
