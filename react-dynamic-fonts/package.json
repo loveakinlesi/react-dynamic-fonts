@@ -18,7 +18,8 @@
   "scripts": {
     "prepublish": "pnpm build --dts",
     "build": "tsup ./src/index.tsx",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "test": "vitest run __tests__"
   },
   "peerDependencies": {
     "react": "^16.8 || ^17 || ^18",
