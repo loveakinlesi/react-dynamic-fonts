@@ -1,15 +1,9 @@
 {
-  "$schema": "https://unpkg.com/@changesets/config@3.0.2/schema.json",
-  "changelog": [
-    "@changesets/changelog-github",
-    {
-      "repo": "loveakinlesi/react-dynamic-fonts",
-      "release": true
-    }
-  ],
-  "access": "public",
+  "$schema": "https://unpkg.com/@changesets/config@1.0.3/schema.json",
+  "changelog": "@changesets/cli/changelog",
   "commit": false,
+  "linked": [],
+  "access": "public",
   "baseBranch": "main",
-  "updateInternalDependencies": "patch",
-  "ignore": []
+  "bumpVersionsWithWorkspaceProtocolOnly": true
 }
