@@ -1,0 +1,37 @@
+{
+  "name": "react-dynamic-fonts",
+  "version": "0.0.1",
+  "license": "MIT",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "prepublish": "pnpm build --dts",
+    "build": "tsup ./src/index.tsx",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "react": "^16.8 || ^17 || ^18",
+    "react-dom": "^16.8 || ^17 || ^18"
+  },
+  "devDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.2.0"
+  },
+  "keywords": [],
+  "author": "Love Akinlesi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loveakinlesi/react-dynamic-fonts.git"
+  }
+}
