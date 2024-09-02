@@ -1,0 +1,5 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+  - 'react-dynamic-fonts'
+  - 'examples/*'
