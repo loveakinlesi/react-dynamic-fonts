@@ -1,4 +1,5 @@
 {
+  "name": "@react-dynamic-fonts/repository",
   "private": true,
   "scripts": {
     "prepublish": "pnpm build --filter=react-dynamic-fonts",
