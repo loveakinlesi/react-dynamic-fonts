@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - "v*.*.*"
-      
+
 permissions:
   contents: write
 
@@ -50,7 +50,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ./**/dist/**
+            ./react-dynamic-fonts/dist/**
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
