@@ -6,6 +6,7 @@ import { googleFonts } from './googleFonts';
 import { useLoadFont } from './useLoadFont';
 
 const FontContext = React.createContext<UseFontProps | undefined>(undefined);
+const FONT_STORAGE_KEY = 'font';
 
 /**
  * `FontProvider` component that manages the font state and provides it to the application.
@@ -18,7 +19,13 @@ export const FontProvider: React.FC<FontProviderProps> = ({
   fonts = googleFonts,
   children,
 }) => {
-  const [font, setFontState] = React.useState<string>(defaultFont);
+  const [font, setFontState] = React.useState<string>(() => {
+    const storedFont =
+      typeof window !== 'undefined'
+        ? localStorage.getItem(FONT_STORAGE_KEY)
+        : null;
+    return storedFont || defaultFont;
+  });
 
   useLoadFont(font);
 
@@ -26,11 +33,13 @@ export const FontProvider: React.FC<FontProviderProps> = ({
     (newFont: string) => {
       if (fonts.includes(newFont)) {
         setFontState(newFont);
+        localStorage.setItem(FONT_STORAGE_KEY, newFont);
       } else {
         console.warn(
           `Font "${newFont}" is not available in the provided fonts list.`,
         );
         setFontState(defaultFont);
+        localStorage.setItem(FONT_STORAGE_KEY, defaultFont);
       }
     },
     [fonts, defaultFont],
