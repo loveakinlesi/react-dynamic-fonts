@@ -29,6 +29,7 @@ afterEach(cleanup);
 describe('FontProvider and useFont', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    localStorage.clear();
   });
 
   test('should initialize with the default font', () => {
@@ -161,5 +162,32 @@ describe('FontProvider and useFont', () => {
     fireEvent.click(button);
 
     expect(renderSpy.mock.calls.length).toBe(initialRenderCount);
+  });
+
+  it('should persist the selected font in localStorage', () => {
+    render(
+      <FontProvider defaultFont='Inter' fonts={['Inter', 'Arial']}>
+        <TestComponent />
+      </FontProvider>,
+    );
+
+    const button = screen.getByText('Change Font');
+
+    fireEvent.click(button);
+    expect(localStorage.getItem('font')).toBe('Arial');
+  });
+
+  it('should load the font from localStorage on initialization', () => {
+    localStorage.setItem('font', 'Arial');
+
+    render(
+      <FontProvider defaultFont='Inter' fonts={['Inter', 'sArial']}>
+        <TestComponent />
+      </FontProvider>,
+    );
+
+    const currentFont = screen.getByTestId('current-font');
+
+    expect(currentFont.textContent).toBe('Arial');
   });
 });
