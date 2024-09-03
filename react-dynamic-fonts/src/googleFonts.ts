@@ -1,5 +1,6 @@
 export const googleFonts: string[] = [
   'Anton',
+  'Arial',
   'Bebas Neue',
   'Dancing Script',
   'Inconsolata',
