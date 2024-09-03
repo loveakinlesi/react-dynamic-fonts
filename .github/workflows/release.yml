@@ -13,6 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Verify commit exists in origin/main
+        run: |
+          git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+          git branch --remote --contains | grep origin/main
+      
+      - name: Set VERSION env var from tag
+        run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -32,11 +40,14 @@ jobs:
       - name: Build project
         run: pnpm run prepublish
 
+      - name: List files in dist directory
+        run: ls -R react-dynamic-fonts
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            dist/**
+            ./**/dist/**
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
